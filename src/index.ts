@@ -10,6 +10,12 @@ import { Emoji } from "./Emoji";
  */
 var emojis: Emoji[] = require("emoji.json");
 
+// sanitize emoji names
+emojis = emojis.map((x) => {
+  x.name = sanitizeConstantName(x.name);
+  return x;
+});
+
 // distinct emojis
 emojis = emojis.filter(
   (obj, pos, array) =>
